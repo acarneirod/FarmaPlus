@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">FarmaPlus</string>
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_favoritas">Farmacias favoritas</string>
+    <string name="nav_cercanas">Farmacias cercanas</string>
+    <string name="nav_buscador">Buscador de farmacias</string>
+    <string name="nav_acercade">Acerca de</string>
+    <string name="copyright">© Adrian Carneiro Diz</string>
+
+    <string name="navigation_drawer_open">E OPEN</string>
+    <string name="navigation_drawer_close">E CLOSE</string>
+    <string name="title_click">T CLICK</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
