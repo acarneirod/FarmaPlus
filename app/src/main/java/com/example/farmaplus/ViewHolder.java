@@ -5,8 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class ViewHolder {
+public class ViewHolder extends RecyclerView.ViewHolder {
     private TextView nombre;
     private TextView direccion;
     private TextView telefono;
@@ -15,6 +16,7 @@ public class ViewHolder {
     private FarmaciaDTO dto;
 
     public ViewHolder(@NonNull View itemView) {
+        super(itemView);
         nombre = (TextView) itemView.findViewById(R.id.nombre);
         direccion = (TextView) itemView.findViewById(R.id.direccion);
         telefono = (TextView) itemView.findViewById(R.id.telefono);
@@ -22,7 +24,7 @@ public class ViewHolder {
         ayuntamiento = (TextView) itemView.findViewById(R.id.ayuntamiento);
     }
 
-    public void showData(FarmaciaDTO dto, Activity activity){
+    public void showData(FarmaciaDTO dto){
         nombre.setText(dto.getNombre());
         direccion.setText(dto.getDireccion());
         telefono.setText(dto.getTelefono());

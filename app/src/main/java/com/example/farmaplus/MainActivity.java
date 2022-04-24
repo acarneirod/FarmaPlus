@@ -69,33 +69,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
             case R.id.nav_inicio:
                 title = R.string.nav_inicio;
+                Fragment inicio = InicioFragment.newInstance(getString(title));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.home_content, inicio)
+                        .commit();
                 break;
             case R.id.nav_favoritas:
                 title = R.string.nav_favoritas;
+                Fragment favoritas = FavoritasFragment.newInstance(getString(title));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.home_content, favoritas)
+                        .commit();
                 break;
             case R.id.nav_cercanas:
                 title = R.string.nav_cercanas;
+                Fragment cercanas = CercanasFragment.newInstance(getString(title));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.home_content, cercanas)
+                        .commit();
                 break;
             case R.id.nav_buscador:
                 title = R.string.nav_buscador;
+                Fragment buscador = BuscadorFragment.newInstance(getString(title));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.home_content, buscador)
+                        .commit();
                 break;
             case R.id.nav_acercade:
                 title = R.string.nav_acercade;
+                Fragment acercaDe = AcercaDeFragment.newInstance(getString(title));
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.home_content, acercaDe)
+                        .commit();
                 break;
             default:
                 throw new IllegalArgumentException("menu option not implemented!!");
         }
 
-        Fragment fragment = InicioFragment.newInstance(getString(title));
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.home_content, fragment)
-                .commit();
-
         setTitle(getString(title));
-
         drawerLayout.closeDrawer(GravityCompat.START);
-
         return true;
     }
 

@@ -6,16 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     private List<FarmaciaDTO> dtos;
-    private Activity activity;
 
-    public RecyclerViewAdapter(List<FarmaciaDTO>dtos,Activity activity){
+    public RecyclerViewAdapter(List<FarmaciaDTO>dtos){
         this.dtos=dtos;
-        this.activity=activity;
     }
 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,int viewType){
@@ -25,7 +24,7 @@ public class RecyclerViewAdapter {
 
     public void onBindViewHolder(ViewHolder viewHolder,int position){
         FarmaciaDTO dto = dtos.get(position);
-        viewHolder.showData(dto,activity);
+        viewHolder.showData(dto);
     }
 
     public int getItemCount(){
