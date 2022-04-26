@@ -3,6 +3,7 @@ package com.example.farmaplus;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,9 +28,9 @@ public class BuscadorFragment extends Fragment {
 
     public List<FarmaciaDTO> hardcode(){
         List<FarmaciaDTO> dtos = new ArrayList<FarmaciaDTO>();
-        FarmaciaDTO dto1 = new FarmaciaDTO("1","1","1","1","1","1","1");
-        FarmaciaDTO dto2 = new FarmaciaDTO("2","2","2","2","2","2","2");
-        FarmaciaDTO dto3 = new FarmaciaDTO("3","3","3","3","3","3","3");
+        FarmaciaDTO dto1 = new FarmaciaDTO("1","ALMOZARA SUÁREZ, JOSHUA","Seoane - Barcala - A Baña","981885864","09:30 - 09:30 (+1)","A Baña","ES-C");
+        FarmaciaDTO dto2 = new FarmaciaDTO("2","ÁLVAREZ SOAJE, MIGUEL ÁNGEL Y GARCÍA MONTAÑA, YOLANDA","Apeadero de Perbes, 16, (Perbes (San Pedro)) - Miño","981783370","09:00 - 22:00","Arzúa","ES-C");
+        FarmaciaDTO dto3 = new FarmaciaDTO("3","BARREIRO SALVADO, JUAN JOSÉ","c/Neira Vilas 2 - Arzúa","981500006","09:00 - 09:30 (+1)","Miño","ES-C");
         dtos.add(dto1);
         dtos.add(dto2);
         dtos.add(dto3);
@@ -64,6 +65,7 @@ public class BuscadorFragment extends Fragment {
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(dtos);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(),DividerItemDecoration.VERTICAL));
         return view;
     }
 }

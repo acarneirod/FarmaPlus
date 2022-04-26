@@ -27,7 +27,7 @@ public class InicioFragment extends Fragment {
     public InicioFragment() {
         // Required empty public constructor
     }
-    
+
     // TODO: Rename and change types and number of parameters
     public static InicioFragment newInstance(String param1) {
         InicioFragment fragment = new InicioFragment();
