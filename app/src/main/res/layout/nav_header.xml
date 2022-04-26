@@ -16,8 +16,10 @@
         android:drawablePadding="12dp"
         android:gravity="center_vertical"
         android:text="@string/app_name"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
-        app:drawableStartCompat="@mipmap/ic_launcher"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@mipmap/logo_final"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

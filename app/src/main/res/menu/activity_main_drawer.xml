@@ -32,7 +32,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/nav_acercade"
-            android:icon="@drawable/acercade"
+            android:icon="@drawable/acercad"
             android:title="@string/nav_acercade" />
     </group>
 
