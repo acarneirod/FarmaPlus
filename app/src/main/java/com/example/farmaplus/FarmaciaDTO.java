@@ -1,5 +1,7 @@
 package com.example.farmaplus;
 
+import org.json.JSONObject;
+
 public class FarmaciaDTO {
     private String id;
     private String nombre;
