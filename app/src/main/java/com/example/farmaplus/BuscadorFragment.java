@@ -42,17 +42,6 @@ public class BuscadorFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public List<FarmaciaDTO> hardcode(){
-        List<FarmaciaDTO> dtos = new ArrayList<FarmaciaDTO>();
-        FarmaciaDTO dto1 = new FarmaciaDTO("1","ALMOZARA SUÁREZ, JOSHUA","Seoane - Barcala - A Baña","981885864","09:30 - 09:30 (+1)","A Baña","ES-C");
-        FarmaciaDTO dto2 = new FarmaciaDTO("2","ÁLVAREZ SOAJE, MIGUEL ÁNGEL Y GARCÍA MONTAÑA, YOLANDA","Apeadero de Perbes, 16, (Perbes (San Pedro)) - Miño","981783370","09:00 - 22:00","Arzúa","ES-C");
-        FarmaciaDTO dto3 = new FarmaciaDTO("3","BARREIRO SALVADO, JUAN JOSÉ","c/Neira Vilas 2 - Arzúa","981500006","09:00 - 09:30 (+1)","Miño","ES-C");
-        dtos.add(dto1);
-        dtos.add(dto2);
-        dtos.add(dto3);
-        return dtos;
-    }
-
     public static BuscadorFragment newInstance(String param1) {
         BuscadorFragment fragment = new BuscadorFragment();
         Bundle args = new Bundle();
@@ -74,15 +63,8 @@ public class BuscadorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_buscador, container, false);
-        List<FarmaciaDTO> dtos = hardcode();
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerBuscador);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(dtos);
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(),DividerItemDecoration.VERTICAL));
-
+        getBusqueda("",view);
         Button buscar = view.findViewById(R.id.botonBusqueda);
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +72,7 @@ public class BuscadorFragment extends Fragment {
                 EditText introducido = view.findViewById(R.id.busquedaFarmacias);
                 String busqueda = introducido.getText().toString();
                 getBusqueda(busqueda,view);
+
                 try {
                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
@@ -103,7 +86,6 @@ public class BuscadorFragment extends Fragment {
     }
 
     public void getBusqueda(String busqueda,View view){
-        JSONArray resultado = new JSONArray();
         String url = "https://625058afe3e5d24b3420b189.mockapi.io/farmacia?search=" + busqueda;
         System.out.println("3");
         JsonArrayRequest peticion = new JsonArrayRequest(
@@ -131,8 +113,7 @@ public class BuscadorFragment extends Fragment {
                         }
                         RecyclerViewAdapter adapter = new RecyclerViewAdapter(farmacias);
                         RecyclerView recyclerView = view.findViewById(R.id.recyclerBuscador);
-                        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(farmacias);
-                        recyclerView.setAdapter(recyclerViewAdapter);
+                        recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
                         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
                         System.out.println("1");
