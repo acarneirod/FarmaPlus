@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

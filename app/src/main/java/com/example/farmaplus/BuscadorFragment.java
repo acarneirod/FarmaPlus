@@ -65,6 +65,7 @@ public class BuscadorFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_buscador, container, false);
         getBusqueda("",view);
+
         Button buscar = view.findViewById(R.id.botonBusqueda);
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +73,6 @@ public class BuscadorFragment extends Fragment {
                 EditText introducido = view.findViewById(R.id.busquedaFarmacias);
                 String busqueda = introducido.getText().toString();
                 getBusqueda(busqueda,view);
-
                 try {
                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
