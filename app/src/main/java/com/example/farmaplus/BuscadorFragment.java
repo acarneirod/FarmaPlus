@@ -87,7 +87,6 @@ public class BuscadorFragment extends Fragment {
 
     public void getBusqueda(String busqueda,View view){
         String url = "https://625058afe3e5d24b3420b189.mockapi.io/farmacia?search=" + busqueda;
-        System.out.println("3");
         JsonArrayRequest peticion = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
@@ -116,13 +115,12 @@ public class BuscadorFragment extends Fragment {
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
                         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
-                        System.out.println("1");
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("2");
+
                     }
                 });
         RequestQueue cola = Volley.newRequestQueue(view.getContext());
