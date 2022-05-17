@@ -2,7 +2,9 @@ package com.example.farmaplus;
 
 import org.json.JSONObject;
 
-public class FarmaciaDTO {
+import java.io.Serializable;
+
+public class FarmaciaDTO implements Serializable {
     private String id;
     private String nombre;
     private String direccion;

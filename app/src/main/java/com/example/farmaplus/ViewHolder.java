@@ -3,6 +3,7 @@ package com.example.farmaplus;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -12,7 +13,15 @@ import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class ViewHolder extends RecyclerView.ViewHolder {
+    private String id;
     private TextView nombre;
     private TextView direccion;
     private TextView telefono;
@@ -34,10 +43,26 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPref = v.getContext().getSharedPreferences("favorites",0);
+                SharedPreferences sharedPref = v.getContext().getSharedPreferences("favoritos", 0);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putBoolean(nombre.getText().toString(), favorito.isChecked());
-                editor.apply();
+                Set<String> hset = new HashSet<>();
+                hset = sharedPref.getStringSet("favoritos", hset);
+                if(favorito.isChecked()==true){
+                    hset.add(id);
+                    editor.putStringSet("favoritos",hset);
+                    editor.commit();
+
+                    sharedPref = v.getContext().getSharedPreferences(id, 0);
+                    editor = sharedPref.edit();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(id,dto);
+                    editor.commit();
+                }else{
+                    hset.remove(id);
+                    editor.putStringSet("favoritos",hset);
+                    editor.commit();
+                }
+
             }
         });
     }
@@ -53,3 +78,4 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         this.dto=dto;
     }
 }
+
