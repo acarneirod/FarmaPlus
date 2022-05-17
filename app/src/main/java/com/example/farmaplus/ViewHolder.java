@@ -54,8 +54,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
                     sharedPref = v.getContext().getSharedPreferences(id, 0);
                     editor = sharedPref.edit();
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(id,dto);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(dto);
+                    editor.putString(id,json);
                     editor.commit();
                 }else{
                     hset.remove(id);
@@ -68,13 +69,20 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void showData(FarmaciaDTO dto){
+        id = dto.getId();
         nombre.setText(dto.getNombre());
         direccion.setText(dto.getDireccion());
         telefono.setText(dto.getTelefono());
         horario.setText(dto.getHorario());
         ayuntamiento.setText(dto.getAyuntamiento());
-        SharedPreferences sharedPref = view.getContext().getSharedPreferences("favorites",0);
-        favorito.setChecked(sharedPref.getBoolean(nombre.getText().toString(),false));
+        SharedPreferences sharedPref = view.getContext().getSharedPreferences("favoritos", 0);
+        Set<String> hset = new HashSet<>();
+        hset = sharedPref.getStringSet("favoritos", hset);
+        if(hset.contains(id)){
+            favorito.setChecked(true);
+        }else{
+            favorito.setChecked(false);
+        }
         this.dto=dto;
     }
 }

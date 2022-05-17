@@ -1,12 +1,23 @@
 package com.example.farmaplus;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class FavoritasFragment extends Fragment {
 
@@ -44,7 +55,26 @@ public class FavoritasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favoritas, container, false);
+        View view = inflater.inflate(R.layout.fragment_favoritas, container, false);
+        SharedPreferences sharedPref = view.getContext().getSharedPreferences("favoritos", 0);
+        Set<String> hset = new HashSet<>();
+        hset = sharedPref.getStringSet("favoritos", hset);
+        List<FarmaciaDTO> farmacias = new ArrayList<>();
+        for (String id : hset){
+            sharedPref = view.getContext().getSharedPreferences(id, 0);
+            Gson gson = new Gson();
+            String json = sharedPref.getString(id, "");
+            FarmaciaDTO dto = gson.fromJson(json, FarmaciaDTO.class);
+            farmacias.add(dto);
+        }
+
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(farmacias);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerFavoritas);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
+
+
+        return view;
     }
 }
