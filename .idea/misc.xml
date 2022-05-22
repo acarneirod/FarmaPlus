@@ -7,9 +7,11 @@
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/drawable/drawer_bakground_highlight.xml" value="0.311" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/drawable/favorito.xml" value="0.1655" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/drawable/ic_launcher_background.xml" value="0.311" />
+        <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/drawable/round_corner.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/drawable/round_corner_2.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/activity_home_navigation_drawer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/activity_main.xml" value="0.23076923076923078" />
-        <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/fragment_acerca_de.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/fragment_acerca_de.xml" value="0.33" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/fragment_buscador.xml" value="0.33" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/fragment_cercanas.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Usuario/Documents/DEV/FarmaPlus/app/src/main/res/layout/fragment_favoritas.xml" value="0.36666666666666664" />

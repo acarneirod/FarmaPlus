@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -90,6 +91,11 @@ public class InicioFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL));
 
 
+        if(farmacias.size() == 0){
+            TextView noEncontradas = view.findViewById(R.id.favoritasNoEncontradas);
+            noEncontradas.setVisibility(view.VISIBLE);
+        }
+
 
         //CERCANAS
         String url = "https://625058afe3e5d24b3420b189.mockapi.io/farmacia?search=" + codigoProvinciaGeolocalizado();
@@ -131,11 +137,6 @@ public class InicioFragment extends Fragment {
                 });
         RequestQueue cola = Volley.newRequestQueue(view.getContext());
         cola.add(peticion);
-
-
-
-
-
 
         return view;
     }
