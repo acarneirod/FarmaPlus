@@ -7,14 +7,14 @@
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="50dp"
+    android:paddingTop="25dp"
     tools:context=".InicioFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/principalFavoritas"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="220dp"
         app:layout_constraintTop_toTopOf="parent">
         <TextView
             android:id="@+id/principalTextoFavoritas"
